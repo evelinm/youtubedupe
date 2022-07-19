@@ -1,8 +1,9 @@
 import { render } from "@testing-library/react";
 import SearchBar from "./SearchBar";
 import youtube from "./api/youtube";
-import {  useState } from 'react';
+import { useCallback, useState } from 'react';
 import VideoList from "./VideoList";
+import VideoDetails from "./VideoDetails";
 
 
 const App = () => {
@@ -22,13 +23,13 @@ const App = () => {
 
 
     const onVideoSelect = (video) => {
-        console.log("from the app",video)
+        setSelectedVideo(video)
     };
 
     return(
         <div className="ui container">
             <SearchBar onTernmSubmit={onTernmSubmit}/>
-       
+            <VideoDetails video={selectedVideo}/>
             <VideoList onVideoSelect={onVideoSelect} videos={videos}/>
         </div>
     )
