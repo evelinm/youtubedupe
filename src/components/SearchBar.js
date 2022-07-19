@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const SearchBar = () => {
+const SearchBar = ({ onTernmSubmit }) => {
 
     const [term, setTerm] = useState('')
     
@@ -9,14 +9,15 @@ const SearchBar = () => {
  
     }
     // AIzaSyDgdMU3lnbmLejPTNYVm1FmzNSBFKE9LiQ
-    const onFormSubmit = (e) => {
+    const onSubmit = (e) => {
         e.preventDefault()
+        onTernmSubmit(e)
         //todo call back from parent component
     }
 
     return(
         <div className="searh-bar ui segment">
-            <form  onSubmit={ (e)=> onFormSubmit(e)} className="ui form">
+            <form  onSubmit={ (e)=> onSubmit(e)} className="ui form">
                 <div className="field">
                     <label> Video Search </label>
                     <input type="text" value={term} onChange={(e) => onInputChange(e)}/>
