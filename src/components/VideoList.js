@@ -1,13 +1,13 @@
 import VideoItem from "./VideoItem"
 
 
-const VideoList = ({videos}) => {
+const VideoList = ({videos,onVideoSelect}) => {
 console.log(videos)
         return (
             <div className=" ui relaxed divided list">
           {
               videos.map((video)=> (
-               <VideoItem video={video}/>
+               <VideoItem onVideoSelect={onVideoSelect} video={video}/>
               ))
           }
             
